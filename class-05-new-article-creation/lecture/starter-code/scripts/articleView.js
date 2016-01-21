@@ -89,8 +89,15 @@ articleView.create = function() {
   exportedData = JSON.stringify(x);
 
 
+  marked.setOptions({
+  highlight: function (code) {
+    return hljs.highlightAuto(code).value;
+  }
+  });
 
-  // TODO: Activate the highlighting of any code blocks:
+  marked(x.body);
+
+
 
 };
 
