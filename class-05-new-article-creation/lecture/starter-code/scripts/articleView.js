@@ -65,25 +65,62 @@ articleView.setTeasers = function() {
 articleView.initNewArticlePage = function() {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later.
 
-  // TODO: The new articles we create will be copy/pasted into our source data file.
-  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
+  $(".icon-home:contains('Preview')").click(function(){
+    articleView.create();
+  });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+
 };
 
 articleView.create = function() {
-  // TODO: Set up a var to hold the new article we are creating.
-  // Clear out the #articles element, so we can put in the updated preview
+  newArticle = {
+        title : $('#article-title').val(),
+        category : $('article-category').val(),
+        author : $('#article-author').val(),
+        authorUrl : $('#article-author-url').val(),
+        publishedOn : '',
+        body : $('#article-body').val(),
+  };
 
-  // TODO: Instantiate an article based on what's in the form fields:
+  $('#articles').empty();
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
+  x = new Article (newArticle);
+  $('#articles').append(x.toHtml());
+  exportedData = JSON.stringify(x);
+
+
 
   // TODO: Activate the highlighting of any code blocks:
 
-  // TODO: Export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
 };
 
+$('#article-published').click(function (){
+
+    if($(this).is(':checked')){
+      x.publishedOn = new Date();
+    }
+
+    else {
+      x.publishedOn = '';
+    }
+
+    $('#articles').empty();
+    $('#articles').append(x.toHtml());
+    exportedData = JSON.stringify(x);
+    $('#article-json').val(exportedData);
+
+    console.log(x);
+});
+
+
+
+
+$('#new-form').keyup(function(){
+    console.log('something');
+    articleView.create();
+    $('#article-json').val(exportedData);
+    console.log(exportedData);
+});
 
 articleView.initIndexPage = function() {
   articleView.populateFilters();
