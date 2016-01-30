@@ -66,14 +66,20 @@
     return Article.allAuthors().map(function(author) {
       return {
         name: author,
-        wordCount : Article.all.map(function(y){
-            if(y.author === author){
-            final = y.body.split(' ').length;
+        wordCount : Article.all.filter(function(y){
+            if (y.author === author){
+              return true;
             }
-            return final;
-              }).reduce(function(a,b){
-                return a + b;
-            })
+            else {
+              return false;
+            }
+            // [222, 3535, undefined ,35353]
+            // return final;
+          }).reduce(function(a,b){
+
+                return a + b.body.split(' ').length;
+
+            },0)
         };
       });
     };
