@@ -15,7 +15,7 @@
 
     this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
     this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
-    this.body = marked(this.body);
+    // this.body = marked(this.body);
 
     return template(this);
   };
@@ -53,7 +53,6 @@
 
   Article.allAuthors = function() {
     return Article.all.map(function(each){
-      console.log(each);
       return each.author;
     }).reduce(function(array, each){
         if (array.indexOf(each) < 0){
@@ -69,7 +68,7 @@
         name: author,
         wordCount : Article.all.map(function(y){
             if(y.author === author){
-             final = y.body.split(' ').length;
+            final = y.body.split(' ').length;
             }
             return final;
               }).reduce(function(a,b){
