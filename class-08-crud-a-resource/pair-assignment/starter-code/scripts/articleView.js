@@ -101,7 +101,7 @@
 
   articleView.initIndexPage = function() {
     Article.all.forEach(function(a){
-      $('#articles').append(a.toHtml())
+      $('#articles').append(a.toHtml());
     });
 
     articleView.populateFilters();
@@ -112,7 +112,7 @@
   };
 
   articleView.initAdminPage = function() {
-    var template = Handlebars.compile($('#author-template').text());
+    var template = Handlebars.compile($('#author-template').html());
 
     Article.numWordsByAuthor().forEach(function(stat) {
       $('.author-stats').append(template(stat));
