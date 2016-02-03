@@ -1,0 +1,17 @@
+{
+  "name": "class-08-crud-a-resource",
+  "version": "0.0.0",
+  "description": "Databases power web applications everywhere by enabling them to persist, modify, and query datasets to great effect. While there are many types of database options available now, Structured Query Language (SQL) remains the de facto standard for communicating with relational database systems. Let's build some SQL skills!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.13.4",
+    "sequelize": "~3.19.0",
+    "pg": "~4.4.4",
+    "pg-hstore": "~2.3.2"
+  }
+}
